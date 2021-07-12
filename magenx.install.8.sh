@@ -20,7 +20,7 @@ ELKREPO="7.x"
 
 # Magento
 MAGE_VERSION="2"
-MAGE_VERSION_FULL=$(curl -s https://api.github.com/repos/magento/magento${MAGE_VERSION}/tags 2>&1 | head -3 | grep -oP '(?<=")\d.*(?=")')
+MAGE_VERSION_FULL=$(curl --silent "https://api.github.com/repos/magento/magento${MAGE_VERSION}/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
 REPO_MAGE="composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition"
 
 # Repositories
